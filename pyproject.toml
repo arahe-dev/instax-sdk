@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "instax-sdk"
+version = "0.1.0"
+description = "Python client for instax Link printers over Bluetooth Classic and BLE"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Abdur Raheem Imami" }]
+keywords = ["instax", "instax mini link", "printer", "bluetooth", "rfcomm", "ble"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Printing",
+    "Topic :: System :: Hardware",
+]
+dependencies = ["bleak>=3.0,<4"]
+
+[project.optional-dependencies]
+imaging = ["pillow>=11"]
+dev = ["pillow>=11", "pytest>=8"]
+
+[project.urls]
+Homepage = "https://github.com/arahe-dev/instax-sdk"
+Issues = "https://github.com/arahe-dev/instax-sdk/issues"
+
+[project.scripts]
+instax = "instax.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
